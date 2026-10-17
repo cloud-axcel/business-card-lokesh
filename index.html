@@ -98,6 +98,33 @@ background:#FFF;border:1px solid #E1E7F0;border-radius:999px;font-size:calc(15 *
 .qr.main{width:calc(250 * var(--u))}
 .qr.main svg{width:calc(220 * var(--u));height:calc(220 * var(--u))}
 }
+
+/* ---------- Subtle motion ---------- */
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes mark-in{from{opacity:0;transform:rotate(-30deg) scale(.94)}to{opacity:.12;transform:rotate(-22deg)}}
+@keyframes mark-drift{0%,100%{transform:rotate(-22deg)}50%{transform:rotate(-20deg) translateY(-6px)}}
+@keyframes card-in{from{opacity:0;transform:translateY(18px) scale(.985)}to{opacity:1;transform:none}}
+@keyframes ring{0%{box-shadow:0 0 0 0 rgba(230,76,113,.45)}70%,100%{box-shadow:0 0 0 12px rgba(230,76,113,0)}}
+@keyframes sheen{0%,72%{transform:translateX(-120%) skewX(-18deg)}100%{transform:translateX(320%) skewX(-18deg)}}
+@media (prefers-reduced-motion:no-preference){
+.card>.logo,.card>.hero,.card>.actions,.card>.list,.card>.scan{animation:rise .6s cubic-bezier(.2,.7,.2,1) both}
+.card>.hero{animation-delay:.08s}
+.card>.actions{animation-delay:.16s}
+.card>.list{animation-delay:.24s}
+.card>.list.tall{animation-delay:.32s}
+.card>.scan{animation-delay:.4s}
+.bg-mark{animation:mark-in 1.2s ease-out both,mark-drift 14s ease-in-out 1.2s infinite}
+.action .dot.pink{animation:ring 2.4s ease-out 1.2s 3}
+.scan::before{content:"";position:absolute;top:0;bottom:0;left:0;width:40%;pointer-events:none;
+background:linear-gradient(90deg,transparent,rgba(255,255,255,.08),transparent);animation:sheen 7s ease-in-out 1.6s infinite}
+.qr{transition:transform .2s ease,box-shadow .2s ease}
+.qr:hover{transform:translateY(-3px);box-shadow:0 12px 24px -12px rgba(0,0,0,.45)}
+.row .ico{transition:transform .2s ease}
+.row:hover .ico{transform:scale(1.08)}
+}
+@media (prefers-reduced-motion:no-preference) and (min-width:640px){
+.card{animation:card-in .7s cubic-bezier(.2,.7,.2,1) both}
+}
 </style>
 </head>
 <body>
