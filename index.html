@@ -57,6 +57,47 @@ svg{display:block}
 .qr-pair{position:relative;display:flex;justify-content:center;gap:calc(16 * var(--u))}
 .qr.small{width:calc(140 * var(--u));padding:calc(12 * var(--u)) calc(12 * var(--u)) calc(8 * var(--u));border-radius:calc(12 * var(--u));gap:calc(6 * var(--u));font-size:calc(15 * var(--u));line-height:calc(20 * var(--u))}
 .qr.small svg{width:calc(116 * var(--u));height:calc(116 * var(--u))}
+/* ---------- Tablet: float the card on a soft backdrop ---------- */
+@media (min-width:640px){
+html,body{background:#E6ECF4}
+body{padding:48px 24px}
+.card{min-height:0;border-radius:calc(28 * var(--u));box-shadow:0 24px 60px -24px rgba(25,57,99,.28),0 2px 6px rgba(25,57,99,.06);
+padding:calc(36 * var(--u)) calc(32 * var(--u)) calc(36 * var(--u))}
+.list{overflow:hidden}
+.row{transition:background-color .15s}
+.row:hover{background:#F8FAFD}
+.action .dot{transition:transform .15s}
+.action:hover .dot{transform:translateY(-2px)}
+}
+
+/* ---------- Desktop: two-column layout, QR panel on the right ---------- */
+@media (min-width:980px){
+:root{--u:min(calc((100vw - 96px) / 1040), 1.1px)}
+body{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:48px}
+.card{width:calc(1040 * var(--u));margin:0;padding:calc(56 * var(--u));
+display:grid;grid-template-columns:minmax(0,1fr) calc(380 * var(--u));
+grid-template-areas:"logo scan" "hero scan" "actions scan" "list scan" "tall scan";
+align-content:start;column-gap:calc(56 * var(--u));row-gap:calc(28 * var(--u))}
+.bg-mark{right:auto;top:auto;left:calc(-200 * var(--u));bottom:calc(-150 * var(--u))}
+.logo{grid-area:logo}
+.hero{grid-area:hero;padding-top:calc(8 * var(--u))}
+.name{font-size:calc(52 * var(--u));line-height:calc(58 * var(--u));letter-spacing:calc(-.8 * var(--u))}
+.role{font-size:calc(22 * var(--u));line-height:calc(28 * var(--u))}
+.tagline{font-size:calc(19 * var(--u));line-height:calc(26 * var(--u))}
+.actions{grid-area:actions;display:flex;flex-wrap:wrap;gap:calc(12 * var(--u))}
+.action{flex-direction:row;gap:calc(10 * var(--u));padding:calc(6 * var(--u)) calc(20 * var(--u)) calc(6 * var(--u)) calc(6 * var(--u));
+background:#FFF;border:1px solid #E1E7F0;border-radius:999px;font-size:calc(15 * var(--u));transition:border-color .15s,box-shadow .15s}
+.action:hover{border-color:#F3B6C5;box-shadow:0 6px 16px -8px rgba(230,76,113,.45)}
+.action .dot{width:calc(40 * var(--u));height:calc(40 * var(--u))}
+.action svg{width:calc(20 * var(--u));height:calc(20 * var(--u))}
+.action:hover .dot{transform:none}
+.list{grid-area:list}
+.list.tall{grid-area:tall}
+.scan{grid-area:scan;align-self:stretch;justify-content:center;padding:calc(32 * var(--u));gap:calc(22 * var(--u))}
+.scan h2{justify-content:center}
+.qr.main{width:calc(250 * var(--u))}
+.qr.main svg{width:calc(220 * var(--u));height:calc(220 * var(--u))}
+}
 </style>
 </head>
 <body>
